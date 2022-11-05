@@ -16,5 +16,6 @@ for filename in os.listdir(r"..\Algeo02-21115\test\{}".format(folder)):
         count += 1
 
 mean = numpy.divide(sum_images, count) # jumlah matriks image dibagi jumlah fotonya
-cv2.imwrite(r"..\Algeo02-21115\test\{}\mean_image.jpg".format(folder), mean) # image hasil rata-rata disimpen ke mean_image.jpg
-# print(mean)
+cv2.imwrite(r"..\Algeo02-21115\test\{}\mean_image.jpg".format(folder), mean)    # image hasil rata-rata disimpen ke mean_image.jpg
+                                                                                # di folder test/dataset_namaorangnya (cth: dataset_taylor)
+print(mean) # ngetes print nilai matriks foto yang udah dirata-ratain
