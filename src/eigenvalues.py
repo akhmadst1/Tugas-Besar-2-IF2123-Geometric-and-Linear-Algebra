@@ -73,10 +73,9 @@ A = [[21,4],
     [3,21]]
 
 
+eigenvaluesMatA, eigenVectorMatB = HessenbergQR(coVarianMatriks(A))
 
-eigenvalues_h, Transformation_h = HessenbergQR(coVarianMatriks(A))
-
-print(sorted(eigenvalues_h))
+print(sorted(eigenvaluesMatA))
 (u,v) = lin.eig(coVarianMatriks(A))
 print(sorted(u))
 
@@ -84,7 +83,7 @@ print(sorted(u))
 
 displayMatrix(v)
 print("prittttttttttttt")
-displayMatrix((Transformation_h))
+displayMatrix((eigenVectorMatB))
 
 B = [[1,4,3,1,5,7],
     [7,5,4,2,1,3],
