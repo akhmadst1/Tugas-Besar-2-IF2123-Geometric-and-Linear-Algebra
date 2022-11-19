@@ -75,7 +75,7 @@ A = [[21,4],
 
 eigenvaluesMatA, eigenVectorMatB = HessenbergQR(coVarianMatriks(A))
 
-print(sorted(eigenvaluesMatA))
+'''print(sorted(eigenvaluesMatA))
 (u,v) = lin.eig(coVarianMatriks(A))
 print(sorted(u))
 
@@ -102,3 +102,4 @@ print(y)
 
 
 # problem : di eigenvektor kadang jawaban dia beda negatif sama linag blm solved
+'''
