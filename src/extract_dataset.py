@@ -55,7 +55,7 @@ L = covariant(newfaces)
 cv2.imwrite(r"..\Algeo02-21115\test\covariant\cov.jpg",L)
 
 #eigenvalue dan eigenvektor 
-eigenvectors = eigenvectors(L)
+ev, eigenvectors = HessenbergQR(L)
 
 #Matrix u 
 u = numpy.dot(newfaces,eigenvectors)
@@ -87,11 +87,16 @@ for i in range(0, wtest.shape[0]):
 #mencari nilai paling kecil dan indeks paling kecil 
 nilaimin = numpy.min(distance)
 idx = numpy.where(distance==nilaimin)
-print(nilaimin)
-print(idx)
-hasil = newimages[:,idx]
-size = (256,256)
-hasil = hasil.reshape(size)
-cv2.imwrite(r"..\Algeo02-21115\test\result\result.jpg", hasil)
+#Misal kayak database taylor tapi test nya stephen jadi gak cocok 
+if(nilaimin > 10000):
+    print("Sorry Foto Tidak Ditemukan di Database")
+else:
+    print("Foto Ditemukan") 
+    print(nilaimin)
+    print(idx)
+    hasil = newimages[:,idx]
+    size = (256,256)
+    hasil = hasil.reshape(size)
+    cv2.imwrite(r"..\Algeo02-21115\test\result\result.jpg", hasil)
 
 #Kalo mau nyoba yang stephen pake linalg aja nyari eigenvektornya soalnya lama banget kalo pake yang manual 
