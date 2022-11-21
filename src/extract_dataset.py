@@ -87,8 +87,8 @@ def mainprogram(path_folder, path_input):
     # Proses training images 
     images, count, newimages, newimages_clr = ekstrasiDataSet(path_folder)
     mean = rataRata(newimages)
-    size = (256, 256)
-    meanface = mean.reshape(size)
+    # size = (256, 256)
+    # meanface = mean.reshape(size)
     # cv2.imwrite(r"..\Algeo02-21115\test\mean\mean.jpg", meanface)
 
     # Selisih training images dengan image rata-rata
@@ -97,8 +97,8 @@ def mainprogram(path_folder, path_input):
     L = covariant(newfaces)
     # cv2.imwrite(r"..\Algeo02-21115\test\covariant\cov.jpg",L)
 
-#eigenvalue dan eigenvektor 
-eigenvectors = eigenvectors(L)
+    #eigenvalue dan eigenvektor 
+    eigenvector = eigenvectors(L)
 
     # Matrix u 
     u = numpy.dot(newfaces, eigenvector)
@@ -121,20 +121,27 @@ eigenvectors = eigenvectors(L)
 
     ut, wtest = weight(u, newfacestest)
 
-############################################################ MENCARI JARAK #######################################################################
-wtest = numpy.transpose(wtest)
-w = numpy.transpose(w) 
-distance = []
-for i in range(0, wtest.shape[0]):
-    distance = [lin.norm(numpy.subtract(wtest[i],wdatabase)) for wdatabase in w]
-#mencari nilai paling kecil dan indeks paling kecil 
-nilaimin = numpy.min(distance)
-idx = numpy.where(distance==nilaimin)
-print(nilaimin)
-print(idx)
-hasil = newimages[:,idx]
-size = (256,256)
-hasil = hasil.reshape(size)
-cv2.imwrite(r"..\Algeo02-21115\test\result\result.jpg", hasil)
+    ############################################################ MENCARI JARAK #######################################################################
+    wtest = numpy.transpose(wtest)
+    w = numpy.transpose(w) 
+    distance = []
+    for i in range(0, wtest.shape[0]):
+        distance = [lin.norm(numpy.subtract(wtest[i],wdatabase)) for wdatabase in w]
+    # mencari nilai paling kecil dan indeks paling kecil 
+    nilaimin = numpy.min(distance)
+    idx = numpy.where(distance == nilaimin)
+    #Misal kayak database taylor tapi test nya stephen jadi gak cocok 
+    if(nilaimin > 1000000):
+        hasil = None
+    else:
+        # print("Foto Ditemukan") 
+        # print(nilaimin)
+        hasil = newimages_clr[(idx[0])[0]]
+        # cv2.imwrite(r"..\Algeo02-21115\test\result\result.png", hasil)
+        cv2.imwrite(r"..\Algeo02-21115\src\assets\result.png", hasil)
 
-# mainprogram(r"C:\Users\Lenovo\Documents\tube\Algeo02-21115\test\dataset_taylor", r"C:\Users\Lenovo\Documents\tube\Algeo02-21115\test\dataset_test\taylor.jpg")
+    end = time.time()
+    duration = end-start
+
+    return hasil, duration
+    # mainprogram(r"C:\Users\Lenovo\Documents\tube\Algeo02-21115\test\dataset_taylor", r"C:\Users\Lenovo\Documents\tube\Algeo02-21115\test\dataset_test\taylor.jpg")

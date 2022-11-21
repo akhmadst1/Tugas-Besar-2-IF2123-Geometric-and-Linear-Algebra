@@ -21,9 +21,6 @@ output_path = ""
 def btn_clicked(image_1, image_2, exec_time_text, isFound_text):
     image = file_input.get()
     folder = folder_input.get()
-    loading = canvas.create_text(
-        717.0, 418.0, text=f"Loading...", fill="#515486",
-            font=("Aril-BoldMT", int(13.0)), anchor="w")
 
     get_test_image(image)
     test_image = tk.PhotoImage(file=ASSETS_PATH / "training.png")
@@ -38,9 +35,8 @@ def btn_clicked(image_1, image_2, exec_time_text, isFound_text):
         tk.messagebox.showerror(
             title="Empty Fields!", message="Please enter folder.")
         return
-    hasil, execution_time = mainprogram(folder, image)
 
-    canvas.delete(loading)
+    hasil, execution_time = mainprogram(folder, image)
 
     if hasil is not None:
         result = tk.PhotoImage(file=ASSETS_PATH / "result.png")
