@@ -21,10 +21,6 @@ def btn_clicked(image_1, image_2, exec_time_text, isFound_text):
     image = file_input.get()
     folder = folder_input.get()
 
-    get_test_image(image)
-    test_image = tk.PhotoImage(file=ASSETS_PATH / "training.png")
-    test_resized = resizeImage(test_image, 256, 256)
-    new_test = canvas.itemconfig(image_1, image=test_resized)
 
     if not image:
         tk.messagebox.showerror(
@@ -34,6 +30,10 @@ def btn_clicked(image_1, image_2, exec_time_text, isFound_text):
         tk.messagebox.showerror(
             title="Empty Fields!", message="Please enter folder.")
         return
+    get_test_image(image)
+    test_image = tk.PhotoImage(file=ASSETS_PATH / "training.png")
+    test_resized = resizeImage(test_image, 256, 256)
+    new_test = canvas.itemconfig(image_1, image=test_resized)
 
     hasil, execution_time = mainprogram(folder, image)
 
