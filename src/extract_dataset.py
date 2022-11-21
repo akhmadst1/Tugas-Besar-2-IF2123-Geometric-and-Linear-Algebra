@@ -97,9 +97,8 @@ def mainprogram(path_folder, path_input):
     L = covariant(newfaces)
     # cv2.imwrite(r"..\Algeo02-21115\test\covariant\cov.jpg",L)
 
-    # Eigenvalue dan Eigenvektor 
-    eigenvector = eigenvectors(L)
-    ev, eigenvector = HessenbergQR(L)
+#eigenvalue dan eigenvektor 
+eigenvectors = eigenvectors(L)
 
     # Matrix u 
     u = numpy.dot(newfaces, eigenvector)
@@ -122,38 +121,20 @@ def mainprogram(path_folder, path_input):
 
     ut, wtest = weight(u, newfacestest)
 
-    ############################################################ MENCARI JARAK #######################################################################
-    wtest = numpy.transpose(wtest)
-    w = numpy.transpose(w) 
-    distance = []
-    for i in range(0, wtest.shape[0]):
-        distance = [lin.norm(numpy.subtract(wtest[i], wdatabase)) for wdatabase in w]
-
-    # Mencari nilai paling kecil dan indeks paling kecil 
-    nilaimin = numpy.min(distance)
-    idx = numpy.where(distance == nilaimin)
-
-    # Misal kayak database taylor tapi test nya stephen jadi gak cocok 
-    if (nilaimin > 1000000):
-        # print("Sorry Foto Tidak Ditemukan di Database")
-        # print(nilaimin)
-        # print((idx[0])[0])
-        hasil = None
-    else:
-        # print("Foto Ditemukan") 
-        # print(nilaimin)
-        # print((idx[0])[0])
-        hasil = newimages_clr[(idx[0])[0]]
-        # size = (256,256)
-        # hasil_bnw = hasil.reshape(size)
-        # cv2.imwrite(r"..\Algeo02-21115\test\result\result.jpg", hasil)
-        # hasil_clr = cv2.imread(os.path.join(path_folder, filename), cv2.IMREAD_GRAYSCALE)
-        cv2.imwrite(r"..\Algeo02-21115\src\assets\result.png", hasil)
-
-    end = time.time()
-    duration = (end-start)
-    return hasil, duration
-    # Kalo mau nyoba yang stephen pake linalg aja nyari eigenvektornya soalnya lama banget kalo pake yang manual
-    # return hasil
+############################################################ MENCARI JARAK #######################################################################
+wtest = numpy.transpose(wtest)
+w = numpy.transpose(w) 
+distance = []
+for i in range(0, wtest.shape[0]):
+    distance = [lin.norm(numpy.subtract(wtest[i],wdatabase)) for wdatabase in w]
+#mencari nilai paling kecil dan indeks paling kecil 
+nilaimin = numpy.min(distance)
+idx = numpy.where(distance==nilaimin)
+print(nilaimin)
+print(idx)
+hasil = newimages[:,idx]
+size = (256,256)
+hasil = hasil.reshape(size)
+cv2.imwrite(r"..\Algeo02-21115\test\result\result.jpg", hasil)
 
 # mainprogram(r"C:\Users\Lenovo\Documents\tube\Algeo02-21115\test\dataset_taylor", r"C:\Users\Lenovo\Documents\tube\Algeo02-21115\test\dataset_test\taylor.jpg")
