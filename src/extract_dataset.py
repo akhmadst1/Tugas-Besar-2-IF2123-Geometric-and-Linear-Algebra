@@ -69,7 +69,7 @@ def covariant(newfaces):
     return L 
 
 def eigenvectors(L):
-    eigenvalues, eigenvectors = HessenbergQR(L) 
+    eigenvalues, eigenvectors = HessenbergQR(L)
     return eigenvectors
 
 def eigenface(newfaces,eigenvectors):
@@ -97,8 +97,10 @@ def mainprogram(path_folder, path_input):
     L = covariant(newfaces)
     # cv2.imwrite(r"..\Algeo02-21115\test\covariant\cov.jpg",L)
 
-    #eigenvalue dan eigenvektor 
+    #eigenvalue dan eigenvektor
     eigenvector = eigenvectors(L)
+   
+    
 
     # Matrix u 
     u = numpy.dot(newfaces, eigenvector)
@@ -131,7 +133,7 @@ def mainprogram(path_folder, path_input):
     nilaimin = numpy.min(distance)
     idx = numpy.where(distance == nilaimin)
     #Misal kayak database taylor tapi test nya stephen jadi gak cocok 
-    if(nilaimin > 1000000):
+    if(nilaimin > 1000000000):
         hasil = None
     else:
         # print("Foto Ditemukan") 

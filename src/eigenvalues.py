@@ -59,7 +59,7 @@ def HessenbergQR(matrix):
 
     mat, mat2 = UpperHessenberg(A)
 
-    for i in range(100):
+    for i in range(10):
         eig, eigV = qrDecomposition(mat)
         mat = multiply(eigV, eig)
         QQ = multiply(QQ,eig)
