@@ -133,7 +133,7 @@ def mainprogram(path_folder, path_input):
     nilaimin = numpy.min(distance)
     idx = numpy.where(distance == nilaimin)
     #Misal kayak database taylor tapi test nya stephen jadi gak cocok 
-    if(nilaimin > 1000000000):
+    if(nilaimin > 8.6e+7):
         hasil = None
     else:
         # print("Foto Ditemukan") 
