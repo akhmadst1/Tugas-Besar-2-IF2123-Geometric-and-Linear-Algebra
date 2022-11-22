@@ -6,9 +6,9 @@ Pengenalan wajah (Face Recognition) adalah teknologi biometrik yang bisa dipakai
 # Struktur Folder
 Berikut ini adalah struktur folder dari project ini:
 
-* Folder 'test' berisi test image dan dataset yang digunakan
-* Folder 'doc' berisi laporan tugas ini
-* Folder 'src' berisi source program.
+* Folder `test` berisi test image dan dataset yang digunakan
+* Folder `doc` berisi laporan tugas ini
+* Folder `src` berisi source program.
 
 # Teknologi
 Pada project ini, teknologi yang digunakan adalah
@@ -20,10 +20,10 @@ Pada project ini, teknologi yang digunakan adalah
 
 # Cara menggunakan
 
-1. Pastikan sudah menginstall 'VSCode'
+1. Pastikan sudah menginstall `VSCode`
 2. Clone repository dari git ke repository local
-3. Buka folder hasil clone di 'VSCode'
-4. Buka dan jalankan 'gui.py'
+3. Buka folder hasil clone di `VSCode`
+4. Buka dan jalankan `gui.py`
 5. Setelah GUI berhasil dijalankan, klik icon folder pada textbox untuk meng-input file test image dan folder dataset
 6. Klik tombol "Generate", lalu program akan melakukan proses pencocokkan
 7. Setelah proses selesai, hasil gambar yang paling mendekati test image akan ditampilkan pada slot "Closest Result"
